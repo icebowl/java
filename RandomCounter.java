@@ -1,4 +1,4 @@
-// Code by CWColeman - 180330 and wnw (who knows when)
+// Code by CWColeman - 180409 
 import java.util.*;
 
 class RandomCounter {
@@ -19,6 +19,7 @@ class RandomCounter {
 	public static void printArrayRev(int rInts[]){
 		int match = 0;
 		for (int i = rInts.length-1; i > -1; i--){
+			if ((i+1)%3==0)System.out.print(" ");
 				System.out.print(rInts[i]);
 			//	if ((rInts.length) % 20 == 0)
 				//	System.out.println();
@@ -77,6 +78,7 @@ class RandomCounter {
 		int i; // loop variable i
 		int max = 52; // maximum number of cards
 		int maxmatches = 0;
+		int shortcount = 0;
 		// define arrays
 		int baseInts[] = new int[max];
 		int randomInts[] = new int[max];
@@ -101,9 +103,14 @@ class RandomCounter {
 			if (matches > maxmatches){maxmatches = matches;
 				System.out.println("\n* MATCHES : "+matches+" * MAX MATCHES * "+maxmatches+" WITH ");
 				printArrayRev(counter);System.out.println();
-				Thread.sleep(250);
+				//Thread.sleep(250);
 			}
-			//Thread.sleep(1000);
+shortcount++;
+			if(shortcount % 1000000000 == 0 ){
+					System.out.println("\n* MATCHES : "+matches+" * MAX MATCHES * "+maxmatches+" WITH ");
+			printArrayRev(counter);System.out.println();
+			shortcount = 0;
+			}
 		}
 	}//end main
 }//end class
