@@ -50,7 +50,7 @@ public class JuliaPlotBW extends JFrame {
 						z = (x * x) + (y * y);
 						k++;
 					}while ((k < iterations) & (z < 4.0));
-						if (k > limit) {
+						if (k >= limit) {
             //  mcolor = k % modvalue;
               //g.setColor(new Color(ared[mcolor],agreen[mcolor],ablue[mcolor]));
               g.setColor(new Color(0,0,0));
