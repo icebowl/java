@@ -4,15 +4,30 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.util.Scanner;
 
 public class MandelJuliaOutline extends JFrame {
   public static int checkPoints (int xyPlot[][], int x, int y){
     int plotit = 0;
     //  if (xyPlot[x][y]=0 && ( xyPlot[x-1][y-1] = 0 || xyPlot[x][y-1] = 0 || xyPlot[x+1][y-1]= 0)) plotit = 1;
-    if (xyPlot[x][y]==1 &&
+  if (xyPlot[x][y]==1 &&
         ( xyPlot[x-1][y-1] ==0 || xyPlot[x][y-1] == 0 || xyPlot[x+1][y-1]==0
           || xyPlot[x-1][y]==0 || xyPlot[x+1][y]==0
             || xyPlot[x-1][y+1]==0 || xyPlot[x][y+1]==0 || xyPlot[x+1][y+1]==0 )) plotit = 1;
+   
+    if (plotit == 1 &&
+        ( xyPlot[x-1][y-1] ==0 || xyPlot[x][y-1] == 0 || xyPlot[x+1][y-1]==0
+            || xyPlot[x-1][y+1]==0 || xyPlot[x][y+1]==0 || xyPlot[x+1][y+1]==0 )) {plotit = 1; System.out.print(" plotit check 2 "); }
+   
+   
+   
+   
+   // if (xyPlot[x][y]==1 &&  xyPlot[x][y-1] == 0 ) plotit = 1;
+   //if (xyPlot[x][y]==1 &&
+   //     ( xyPlot[x-1][y-1] ==0 || xyPlot[x][y-1] == 0 || xyPlot[x+1][y-1]==0)) plotit = 1;
+   
+   
+   
 		return plotit;
 }
    public MandelJuliaOutline()
@@ -22,25 +37,22 @@ public class MandelJuliaOutline extends JFrame {
       setVisible( true );
    }
 
-   public void paint( Graphics g ){
-        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		    // only change code below this line
-        double xarray[][] = new double[1000][1000];
-          double yarray[][] = new double[1000][1000];
-          double c1array[] = new double[5000];
-          double c2array[] = new double[5000];
-            int xyPlot[][] = new int[1000][1000];
-	      int a,b,i,j;
+	public void paint( Graphics g ){
+		double xarray[][] = new double[1000][1000];
+		double yarray[][] = new double[1000][1000];
+		double c1array[] = new double[5000];
+		double c2array[] = new double[5000];
+		int xyPlot[][] = new int[1000][1000];
+		int a,b,i,j;
         double c1,c2;
         int loopJulia = 0;
         int c1c2count = 0;
-        //double c1,c2;
         int plotit = 0;
         int k = 0;
-	      double x,y,x1,x2,y1,z;
+		double x,y,x1,x2,y1,z;
 		    double id, jd;
 		    int iterations = 1000;
-        // initialize xyPlot
+        // initialize xyPlot[][]
         for (i = 0 ; i < 1000 ; i++) {
             for (j = 0; j < 1000; j++){
               xyPlot[i][j] = 0;
@@ -74,7 +86,7 @@ public class MandelJuliaOutline extends JFrame {
             //  System.out.println(x1+" - "+y1);
                 if (k >= 1000) {
                     xyPlot[i][j] = 1;
-                  //System.out.println(x1+" "+y1+" "+first);
+				//  System.out.println(x1+" "+y1+" plotted");
                   g.setColor(new Color(127,127,127));
                   g.drawLine(i,j,i,j);
                 }
@@ -86,8 +98,8 @@ public class MandelJuliaOutline extends JFrame {
           g.setColor(new Color(250,250,250));
           plotit = checkPoints(xyPlot,i,j);
           if (plotit == 1) {
-              g.setColor(new Color(0,200,0));
-              System.out.println(  xarray[i][j]+ " "+ yarray[i][j]);
+              g.setColor(new Color(30,127,30));
+              System.out.println(  xarray[i][j]+ " "+ yarray[i][j]+" array printed c1c2count "+c1c2count);
               c1array[c1c2count] = xarray[i][j];
               c2array[c1c2count] = yarray[i][j];
                 c1c2count++;
@@ -96,6 +108,12 @@ public class MandelJuliaOutline extends JFrame {
 	    	}//end for i
         }//end for j mandelbot
         System.out.println("\n\n"+c1c2count+"\n\n");
+        
+		Scanner objScanner = new Scanner(System.in);
+		char c = objScanner.next().charAt(0);
+		System.out.println(c);
+				
+        
       //plot Julia
       g.setColor(new Color(255,255,0));
       g.fillRect(0,0,1000,1000);
