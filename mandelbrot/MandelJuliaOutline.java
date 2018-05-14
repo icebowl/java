@@ -31,6 +31,8 @@ public class MandelJuliaOutline extends JFrame {
           double c2array[] = new double[5000];
             int xyPlot[][] = new int[1000][1000];
 	      int a,b,i,j;
+        double c1,c2;
+        int loopJulia = 0;
         int c1c2count = 0;
         //double c1,c2;
         int plotit = 0;
@@ -68,9 +70,9 @@ public class MandelJuliaOutline extends JFrame {
                 x = x2;
                 z = (x * x) + (y * y);
                 k++;
-              }while ((k < iterations) & (z < 4.0));
+              }while ((k < 1000) & (z < 4.0));
             //  System.out.println(x1+" - "+y1);
-                if (k >= limit) {
+                if (k >= 1000) {
                     xyPlot[i][j] = 1;
                   //System.out.println(x1+" "+y1+" "+first);
                   g.setColor(new Color(127,127,127));
@@ -97,13 +99,16 @@ public class MandelJuliaOutline extends JFrame {
       //plot Julia
       g.setColor(new Color(255,255,0));
       g.fillRect(0,0,1000,1000);
-      c1 = c1array[200];
-      c2 = c2array[200];
-
+      while (loopJulia < c1c2count){
+      c1 = c1array[loopJulia];
+      c2 = c2array[loopJulia];
+    //c1 = -2.0;
       for (j = 0 ; j < 1000 ; j++) {
           jd = (double) j;
           y1 = (500 - jd) / scale;
             for (i = 0; i < 1000; i++){
+              g.setColor(new Color(200,200,200));
+              g.drawLine(i,j,i,j);
               id = (double) i;
               x1 = (id - 500) / scale;
               x = x1;
@@ -123,13 +128,14 @@ public class MandelJuliaOutline extends JFrame {
                 }
             }//end for i
             }//end for j
-
+            loopJulia++;
+            c1 = c1 + 0.1;
+        }//end while
   }
 // execute application
 // globals
 //double c1, c2, limit, int ired, igreen, iblue,redAjust, greenAjust, blueAjust
-static double c1;
-static double c2 ;
+
 static double  limit;
 static int iterations;
 static int scale ;
