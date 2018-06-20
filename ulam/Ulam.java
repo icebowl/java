@@ -39,14 +39,15 @@ public class Ulam extends JFrame { //change the name of class to match the name 
 
    public void paint( Graphics g )
    {
-	int scale = 31;
+	int scale = 71;
+	int count = 0;
 	boolean checkPrime;
 	IsPrime is = new IsPrime();
 	int checkPrimes = 0;
 	int modPrimes = 0;
-	int nx,ny,count;
+	int nx,ny;
 	int red = 0, green = 0, blue = 0;
-	g.setColor(new Color(255,255,255));	g.fillRect(0,0,800,800);
+	g.setColor(new Color(0,43,54));	g.fillRect(0,0,800,800);
 	//g.setColor(new Color(red,green,blue));g.fillOval(nx,ny,5,5);
 	// code from the tty debug
 		int x = 0, y = 0,  e; // e is the end state of nlogic;
@@ -56,7 +57,7 @@ public class Ulam extends JFrame { //change the name of class to match the name 
 		int n, nlogic =0;
 		n = 1;
 		//System.out.println("n:"+n+" x:"+x+" y:"+y+" h:"+h+" k:"+k+" nlogic "+nlogic+" parity:"+parity);
-			g.setColor(new Color(0,0,0));
+			g.setColor(new Color(113,176,159));
 			g.fillRect(h+400,400-k,scale,scale);
 			//g.drawLine(h+400,400-k,h+400,400-k);
 
@@ -65,7 +66,7 @@ public class Ulam extends JFrame { //change the name of class to match the name 
 			//System.out.println (e + " e ***************************");
 			nlogic = 0;
 			for (x = 0; x < e; x++){
-				g.setColor(new Color(255,255,255));
+				g.setColor(new Color(0,43,54));
 				g.drawRect(h+400,400-k,scale,scale);
 				h = h + (parity*scale);
 					n++;
@@ -73,8 +74,10 @@ public class Ulam extends JFrame { //change the name of class to match the name 
 				checkPrime = is.isprime(n);
 				if (checkPrime)
 					{	checkPrimes++;
-							modPrimes = checkPrimes % 15;
-							System.out.print (modPrimes+" ");
+							//modPrimes = checkPrimes % 14;
+							modPrimes = count % 14;
+							count++;
+						//	System.out.print (modPrimes+" ");
 								// 0 base03     0  43  54
 								// 1 base02     7  54  66
 								// 2 base01    7  88 110
@@ -92,22 +95,21 @@ public class Ulam extends JFrame { //change the name of class to match the name 
 								//	14		cyan        42 161 152
 								//	15		green      133 153   0
 					switch(modPrimes){
-						case 0: g.setColor(new Color(0,43,54));break;
-						case 1: g.setColor(new Color(7,54,66));break;
-						case 2: g.setColor(new Color(7,88,110));break;
-						case 3: g.setColor(new Color(101,123,131));break;
-						case 4: g.setColor(new Color(131,148,150));break;
-						case 5: g.setColor(new Color(147,161,161));break;
-						case 6: g.setColor(new Color(238,232,213));break;
-						case 7: g.setColor(new Color(252,246,227));break;
-						case 8: g.setColor(new Color(181,137,0));break;
-						case 9: g.setColor(new Color(203,75,22));break;
-						case 10: g.setColor(new Color(220,50,47));break;
-						case 11: g.setColor(new Color(211,54,130));break;
-						case 12: g.setColor(new Color(108,113,196));break;
-						case 13: g.setColor(new Color(38,139,210));break;
-						case 14: g.setColor(new Color(42,161,152));break;
-						case 15: g.setColor(new Color(133,154,0));break;
+						case 0: g.setColor(new Color(7,54,66));break;
+						case 1: g.setColor(new Color(7,88,110));break;
+						case 2: g.setColor(new Color(101,123,131));break;
+						case 3: g.setColor(new Color(131,148,150));break;
+						case 4: g.setColor(new Color(147,161,161));break;
+						case 5: g.setColor(new Color(238,232,213));break;
+						case 6: g.setColor(new Color(252,246,227));break;
+						case 7: g.setColor(new Color(181,137,0));break;
+						case 8: g.setColor(new Color(203,75,22));break;
+						case 9: g.setColor(new Color(220,50,47));break;
+						case 10: g.setColor(new Color(211,54,130));break;
+						case 11: g.setColor(new Color(108,113,196));break;
+						case 12: g.setColor(new Color(38,139,210));break;
+						case 13: g.setColor(new Color(42,161,152));break;
+						case 14: g.setColor(new Color(133,154,0));break;
 				}//end select
 					//	g.setColor(new Color(255,255,255));
 				//	g.drawLine(h+400,400-k,h+400,400-k);
@@ -116,7 +118,7 @@ public class Ulam extends JFrame { //change the name of class to match the name 
 		}
 			nlogic =1;
 			for (y = 0; y < e; y++){
-				g.setColor(new Color(255,255,255));
+				g.setColor(new Color(0,43,54));
 				g.drawRect(h+400,400-k,scale,scale);
 					k = k + (parity*scale);
 					n++;
@@ -125,25 +127,26 @@ public class Ulam extends JFrame { //change the name of class to match the name 
 		checkPrime = is.isprime(n);
 				if (checkPrime)
 				{	checkPrimes++;
-					modPrimes = checkPrimes % 16;
-				System.out.print (modPrimes+" ");
+					//modPrimes = checkPrimes % 14;
+					modPrimes = count % 14;
+					count++;
+				//System.out.print (modPrimes+" ");
 					switch(modPrimes){
-						case 0:g.setColor(new Color(0,43,54));break;
-						case 1: g.setColor(new Color(7,54,66));break;
-						case 2: g.setColor(new Color(7,88,110));break;
-						case 3: g.setColor(new Color(101,123,131));break;
-						case 4: g.setColor(new Color(131,148,150));break;
-						case 5: g.setColor(new Color(147,161,161));break;
-						case 6: g.setColor(new Color(238,232,213));break;
-						case 7: g.setColor(new Color(252,246,227));break;
-						case 8: g.setColor(new Color(181,137,0));break;
-						case 9: g.setColor(new Color(203,75,22));break;
-						case 10: g.setColor(new Color(220,50,47));break;
-						case 11: g.setColor(new Color(211,54,130));break;
-						case 12: g.setColor(new Color(108,113,196));break;
-						case 13: g.setColor(new Color(38,139,210));break;
-						case 14: g.setColor(new Color(42,161,152));break;
-						case 15: g.setColor(new Color(133,154,0));break;
+						case 0: g.setColor(new Color(7,54,66));break;
+						case 1: g.setColor(new Color(7,88,110));break;
+						case 2: g.setColor(new Color(101,123,131));break;
+						case 3: g.setColor(new Color(131,148,150));break;
+						case 4: g.setColor(new Color(147,161,161));break;
+						case 5: g.setColor(new Color(238,232,213));break;
+						case 6: g.setColor(new Color(252,246,227));break;
+						case 7: g.setColor(new Color(181,137,0));break;
+						case 8: g.setColor(new Color(203,75,22));break;
+						case 9: g.setColor(new Color(220,50,47));break;
+						case 10: g.setColor(new Color(211,54,130));break;
+						case 11: g.setColor(new Color(108,113,196));break;
+						case 12: g.setColor(new Color(38,139,210));break;
+						case 13: g.setColor(new Color(42,161,152));break;
+						case 14: g.setColor(new Color(133,154,0));break;
 				}
 					//	g.setColor(new Color(255,255,255));
 					//g.drawLine(h+400,400-k,h+400,400-k);
