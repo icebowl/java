@@ -1,6 +1,11 @@
-# java
+<pre>
+# simple java routines 
+linux JAVA_HOME
+~/.bash_profile  
+export JAVA_HOME=/opt/jdk-11.0.1
+export PATH=$JAVA_HOME/bin:$PATH
 
-simple java routines 
+
 /*
 public means that the method is visible and can be called from other 
 * objects of other types. Other alternatives are private, protected, 
@@ -17,3 +22,4 @@ The combination of all three of these is most
 * commonly seen on the main method which most 
 * tutorials will include.
  */
+</pre>
