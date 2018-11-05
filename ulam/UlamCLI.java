@@ -6,7 +6,6 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-
 class IsPrime {
 	boolean prime;
 			int  d;// x is the number to check to be prime
@@ -111,9 +110,9 @@ public class UlamCLI extends JFrame { //change the name of class to match the na
 						case 13: g.setColor(new Color(42,161,152));break;
 						case 14: g.setColor(new Color(133,154,0));break;
 				}//end select
-					//	g.setColor(new Color(255,255,255));
-				//	g.drawLine(h+400,400-k,h+400,400-k);
-					g.fillRect(h+400,400-k,scale,scale);
+						g.setColor(new Color(255,255,255));
+					g.drawLine(h+400,400-k,h+401,401-k);
+					//g.fillRect(h+400,400-k,scale,scale);
 				}
 		}
 			nlogic =1;
@@ -148,9 +147,9 @@ public class UlamCLI extends JFrame { //change the name of class to match the na
 						case 13: g.setColor(new Color(42,161,152));break;
 						case 14: g.setColor(new Color(133,154,0));break;
 				}
-					//	g.setColor(new Color(255,255,255));
-					//g.drawLine(h+400,400-k,h+400,400-k);
-					g.fillRect(h+400,400-k,scale,scale);
+						g.setColor(new Color(255,255,255));
+					g.drawLine(h+400,400-k,h+401,401-k);
+					//g.fillRect(h+400,400-k,scale,scale);
 				}
 			}
 
@@ -166,8 +165,8 @@ public class UlamCLI extends JFrame { //change the name of class to match the na
 	static int scale;
    public static void main( String args[] )
    {
-		 scale = Double.parseDouble(a[0]);
-	   Ulam ulamobject = new  Ulam();//change this to match the name of the file and class
+		 scale =  Integer.parseInt(args[0]);
+	   UlamCLI ulamobject = new  UlamCLI();//change this to match the name of the file and class
 
 	   	// adapter to handle only windowClosing event
 		ulamobject.addWindowListener(
